@@ -31,12 +31,12 @@ except:
 
 #4.
 def AbyB(a , b):
-	try:
-		c = ((a+b) / (a-b))
-	except ZeroDivisionError:
-		print("a/b result in 0")
-	else:
-		print(c)
+    try:
+        c = ((a+b) / (a-b))
+    except ZeroDivisionError:
+        print("a/b result in 0")
+    else:
+        print(c)
 
 # Driver program to test above function
 AbyB(2.0, 3.0) #output:-5.0
@@ -63,14 +63,19 @@ except:
     print('List index lies in 0-2')
 
 #6.user defined error
-age = int(input('Enter age:'))
-class AgeTooSmallError(Exception):
-    raise Exception('Age is small!')
+class Error(Exception):
+    """  """
     pass
-if age<18:
+class AgeTooSmallError(Error):
+    'Age is small!'
+    pass
+while True:
     try:
-        print(' ')
+        age = int(input('Enter the age'))
+        if(age < 18):
+            raise AgeTooSmallError
+        break
     except AgeTooSmallError:
-        raise AgeTooSmallError
-else:
-    print(age)
+        print('Entered age is too small')
+print('Age is more than 18')
+
